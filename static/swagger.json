@@ -1,0 +1,87 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "description": "Azure Assistant API",
+      "version": "1.0.0",
+      "title": "Deepanshu-OpenAI-Assistant"
+    },
+    "servers": [
+      {
+        "url": "/"
+      }
+    ],
+    "tags": [
+      {
+        "name": "Chat Bot Request",
+        "description": "API for interacting with the Azure Assistant to create threads and handle messages"
+      }
+    ],
+    "paths": {
+      "/assistant/query": {
+        "post": {
+          "tags": [
+            "Chat Bot Request"
+          ],
+          "summary": "Submit a user query and get the assistant's response",
+          "requestBody": {
+            "description": "User's message to the assistant",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userMessage"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Assistant's response successfully retrieved",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/assistantResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request - Invalid Input"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "userMessage": {
+          "type": "object",
+          "properties": {
+            "role": {
+              "type": "string",
+              "enum": ["user"]
+            },
+            "content": {
+              "type": "string",
+              "example": "What's the expensive product?"
+            }
+          },
+          "required": ["role", "content"]
+        },
+        "assistantResponse": {
+          "type": "object",
+          "properties": {
+            "runStatus": {
+              "type": "string",
+              "enum": ["completed"]
+            },
+            "message": {
+              "type": "string",
+              "example": "The most expensive product listed in the document is the 'Apple MacBook Pro 14-inch' with a price of $1999."
+            }
+          }
+        }
+      }
+    }
+  }
+  
