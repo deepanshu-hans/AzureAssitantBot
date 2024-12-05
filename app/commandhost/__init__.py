@@ -1,4 +1,4 @@
-from app.commands import handle_assistant_query
+from app.commands import AssistantHandler
 
 class CommandHost:
     """
@@ -12,7 +12,7 @@ class CommandHost:
         """
         try:
             # Call the command to handle the query
-            result = await handle_assistant_query(user_input)
+            result = await AssistantHandler.handle_query(user_input)
             return result
         except Exception as e:
             # Handle errors gracefully and log them

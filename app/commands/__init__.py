@@ -1,8 +1,13 @@
-from app.services import process_user_input
+from app.services import AzureAssistantService
 
-async def handle_assistant_query(user_input: str) -> str:
+class AssistantHandler:
     """
-    Command to process the user's query and interact with the assistant service.
+    A class to handle assistant queries.
     """
-    # Pass the user input to the service layer
-    return await process_user_input(user_input)
+
+    async def handle_query(user_input: str) -> str:
+        """
+        Method to process the user's query and interact with the assistant service.
+        """
+        # Pass the user input to the service layer
+        return await AzureAssistantService.process_user_input(user_input)
