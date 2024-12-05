@@ -26,7 +26,6 @@ class AssistantRouter:
             description="The user's query to be processed by the assistant."
         )
 
-    # Modify to be a normal function for dependency injection
     async def get_assistant_service() -> AzureAssistantService:
         """
         Dependency injection for the assistant service.
@@ -38,7 +37,6 @@ class AssistantRouter:
             assistant_id="asst_3OtAZTPpmi0sKhR9pAh2qkFI",
         )
 
-    # Updated this method to be static, as self isn't needed here
     @staticmethod
     async def assistant_query(
         payload: AssistantQueryPayload,
@@ -56,6 +54,5 @@ class AssistantRouter:
             raise HTTPException(status_code=500, detail=str(e))
 
 
-# Instantiate the router
 assistant_router = AssistantRouter()
 router = assistant_router.router

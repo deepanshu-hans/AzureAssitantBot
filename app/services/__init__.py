@@ -52,14 +52,3 @@ class AzureAssistantService:
 
         except Exception as e:
             raise Exception(f"Error in processing: {str(e)}")
-
-
-# Example of instantiating and using the service
-if __name__ == "__main__":
-    # Example initialization
-    service = AzureAssistantService(
-        api_key="aedc8ec21a8b47908eadb2fa8ac648df",
-        api_version="2024-08-01-preview",
-        azure_endpoint="https://planb-eastus2-openai-service.openai.azure.com/",
-        assistant_id="asst_3OtAZTPpmi0sKhR9pAh2qkFI",
-    )
